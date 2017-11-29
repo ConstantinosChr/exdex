@@ -1,3 +1,4 @@
+#' @export
 mlevsthresh <- function (data, tmin, tmax){
 
   quant <- seq ( tmin , tmax , by = 1)

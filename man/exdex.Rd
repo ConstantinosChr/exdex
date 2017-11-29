@@ -7,8 +7,8 @@
 \title{exdex: Estimation of the Extremal Index}
 \description{
 Performs frequentist inference for the extremal index using the methodologies
-described in Suveges and Davison (2010)  <doi:10.1214/09-AOAS292> and in
-Northrop (2015) <doi:10.1007/s10687-015-0221-5>.
+described in Suveges and Davison (2010)  \url{http://dx.doi.org/10.1214/09-AOAS292} and in
+Northrop (2015) \url{http://dx.doi.org/10.1007/s10687-015-0221-5}.
 }
 \details{
 Add details.

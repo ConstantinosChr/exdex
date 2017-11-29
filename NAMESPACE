@@ -2,3 +2,4 @@
 
 export(kgaps_mle)
 export(kgaps_stats)
+import(methods)

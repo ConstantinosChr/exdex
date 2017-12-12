@@ -2,5 +2,5 @@
 
 export(kgaps_mle)
 export(kgaps_stats)
-export(mlevsthresh)
+export(threshplot)
 import(methods)

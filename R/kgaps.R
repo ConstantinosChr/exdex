@@ -154,7 +154,7 @@ kgaps_stats <- function(data, thresh, k = 1, inc_cens = FALSE) {
   q_u <- N_u / nx
   # Inter-exceedances times and K-gaps
   T_u <- diff(exc_u)
-  S_k <- pmax(T_u - k,0)
+  S_k <- pmax(T_u - k, 0)
   # N0, N1, sum of scaled K-gaps
   N1 <- sum(S_k > 0)
   N0 <- N_u - 1 - N1
@@ -221,10 +221,9 @@ kgaps_conf_int <- function(theta_mle, ss, conf = 95) {
 
 kgaps_quad_solve <- function(N0, N1, sum_qs) {
   aa <- sum_qs
-  bb <- -(N0 + 2 * N1 + sum_qs)
+  bb <- - (N0 + 2 * N1 + sum_qs)
   cc <- 2 * N1
-  qq <- -(bb - sqrt(bb ^ 2 - 4 * aa * cc)) / 2
+  qq <- - (bb - sqrt(bb ^ 2 - 4 * aa * cc)) / 2
   theta_mle <- cc / qq
   return(theta_mle)
 }
-

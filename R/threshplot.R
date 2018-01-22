@@ -51,20 +51,20 @@
 #' @export
 threshplot <- function (data, tmin, tmax, conf = 95, k = 1, ... ){
 
-  quant <- seq ( tmin , tmax , by = 1)
+  quant <- seq ( tmin, tmax, by = 1)
 
   x <- (tmax - tmin) + 1
 
-  p <- quant/100
+  p <- quant / 100
 
   thresh <- quantile( data, probs = p )
 
-  mplot<- matrix ( 0 ,nrow = x, ncol = 2, byrow = TRUE, dimnames = list( NULL ,
+  mplot <- matrix ( 0, nrow = x, ncol = 2, byrow = TRUE, dimnames = list( NULL,
                    c("Theta", "Quantile")))
-  ci <- matrix ( 0 ,nrow = x, ncol = 2, byrow = TRUE, dimnames = list( NULL ,
+  ci <- matrix ( 0, nrow = x, ncol = 2, byrow = TRUE, dimnames = list( NULL,
                 c("Lower", "Upper")))
 
-  for( i in 1:x){
+  for ( i in 1:x){
     theta <- kgaps_mle( data, thresh[i], conf = conf, k = k)
     mplot[ i, 2 ] <- p[i]
     mplot[ i, 1 ] <- theta$theta_mle
@@ -87,10 +87,10 @@ threshplot <- function (data, tmin, tmax, conf = 95, k = 1, ... ){
     user_args$ylab <- "Theta"
   }
   if (is.null(user_args$type)) {
-    user_args$type = "l"
+    user_args$type <- "l"
   }
   if (is.null(user_args$pch)) {
-    user_args$pch = 16
+    user_args$pch <- 16
   }
   user_args$x <- mplot[, "Quantile"]
   user_args$y <- y

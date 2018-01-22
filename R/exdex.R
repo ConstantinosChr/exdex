@@ -3,6 +3,10 @@
 #' Performs frequentist inference for the extremal index using the methodologies
 #' described in Suveges and Davison (2010)  \url{http://dx.doi.org/10.1214/09-AOAS292} and in
 #' Northrop (2015) \url{http://dx.doi.org/10.1007/s10687-015-0221-5}.
+#' This is done in two ways, based on the two main forms of extreme value theory.
+#' One is based on exceedances of a high threshold, the other is based on the
+#' behaviour of the r largest order statistics within a block, for small values
+#' of r.
 #'
 #' @details Add details.
 #'

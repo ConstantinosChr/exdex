@@ -4,11 +4,15 @@
 #' described in Suveges and Davison (2010)  \url{http://dx.doi.org/10.1214/09-AOAS292} and in
 #' Northrop (2015) \url{http://dx.doi.org/10.1007/s10687-015-0221-5}.
 #' This is done in two ways, based on the two main forms of extreme value theory.
-#' One is based on exceedances of a high threshold, the other is based on the
-#' behaviour of the r largest order statistics within a block, for small values
-#' of r.
+#' One uses threshold inter-exceedance times based on the K-gaps model and the
+#' other one is based on block maxima.
 #'
-#' @details Add details.
+#' @details The main functions in the exdex package are \code{\link{kgaps_mle}}
+#' and \code{\link{spm_mle}} which are used to estimate the extremal index
+#' \eqn{\theta}. The user chooses the extreme value model and provides the data.
+#' Additionally, the user for the \eqn{K}-gaps model chooses an extreme value
+#' threshold \eqn{thresh} that is applied to data, whereas for the block maxima
+#' method he chooses \eqn{b}, the block size.
 #'
 #'   See \code{vignette("exdex-vignette", package = "exdex")} for an
 #'   overview of the package.
@@ -19,6 +23,12 @@
 #' @references Attalides, N. (2015) Threshold-based extreme value modelling,
 #'   PhD thesis, University College London.
 #'   \url{http://discovery.ucl.ac.uk/1471121/1/Nicolas_Attalides_Thesis.pdf}
+#' @seealso \code{\link{kgaps_mle}} to calculate the maximum likelihood estimates
+#' of the extremal index \eqn{\theta} based on the K-gaps model for threshold
+#' inter-exceedances times of Suveges and Davison (2010).
+#' @seealso \code{\link{spm_mle}} to calculate the semiparametric maxima
+#' estimator of the extremal index \eqn{\theta} based on sliding or disjoint
+#' block maxima based on Northrop (2015).
 #' @docType package
 #' @name exdex
 #' @import methods

@@ -12,9 +12,11 @@ knitr::opts_chunk$set(
 )
 ```
 
-# exdex
+### What does exdex do?
 
-The goal of exdex is to ...
+The `exdex` package uses threshold inter-exceedance times based on the K-gaps 
+model and the method described in Northrop (2015) that is based on block maxima 
+to estimate the extremal index. The extremal index measures how strong is the dependence between the threshold exceedances. 
 
 ## Installation
 
@@ -25,10 +27,25 @@ You can install exdex from github with:
 devtools::install_github("ConstantinosChr/exdex")
 ```
 
-## Example
+## A simple example
 
-This is a basic example which shows you how to solve a common problem:
+For the K-gaps method:
 
 ```{r example}
-## basic example code
+thresh <- quantile(newlyn, probs = 0.90)
+k_res <- kgaps_mle(newlyn, thresh, conf = 95)
+k_res$theta_mle
+k_res$theta_se
+k_res$theta_ci
 ```
+
+For the block maxima method:
+
+```{r example}
+spm_mle(newlyn, 20)
+spm_mle(newlyn, 20, sliding = FALSE)
+```
+
+## Vignette
+
+See \code{vignette("exdex-vignette", package = "exdex")} for an overview of the package.

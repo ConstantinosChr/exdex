@@ -11,9 +11,11 @@ spm_mle(data, b, sliding = TRUE, constrain = TRUE)
 
 \item{b}{A numeric scalar.  The block size.}
 
-\item{sliding}{A logical scalar.}
+\item{sliding}{A logical scalar indicating whether use sliding blocks
+(\code{TRUE}) or disjoint blocks (\code{FALSE}).}
 
-\item{constrain}{A logical scalar.}
+\item{constrain}{A logical scalar indicating whether or not to constrain the
+mle to lie in the interval (0, 1].}
 }
 \value{
 A list containing
@@ -28,14 +30,18 @@ A list containing
 }
 \description{
 Calculates the semiparametric maxima estimator of the extremal index
-\eqn{\theta} based on sliding or disjoint block maxima.
+\eqn{\theta} based on sliding or disjoint block maxima based on Northrop (2015).
 }
 \details{
-If \code{sliding = TRUE} then the function uses sliding block maxima
-whereas if \code{sliding = FALSE} then disjoint block maxima are used
-instead.
-
-If \code{constrain = TRUE} then ...
+The extremal index \eqn{\theta} is estimated using the semiparametric
+maxima estimator of Northrop (2015).  If \code{sliding = TRUE} then the
+function uses sliding block maxima, that is, the largest value observed in
+\emph{all} blocks of \code{b} observatioins, whereas if \code{sliding = FALSE}
+then disjoint block maxima, that is, the largest values in non-overlapping
+blocks of \code{b} osbervations, are used.  If \code{constrain = TRUE} then
+if the raw estimate of the extremal index is greater than one then a value of
+1 is returned. Otherwise (\code{constrain = FALSE}) the raw estimate is
+returned, even if it is greater than 1.
 }
 \examples{
 spm_mle(newlyn, 20)

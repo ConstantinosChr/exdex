@@ -2,7 +2,9 @@
 title: "exdex"
 author: "Constantinos Christodoulides"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output: 
+  rmarkdown::html_vignette:
+    toc: true
 vignette: >
   %\VignetteIndexEntry{Vignette Title}
   %\VignetteEngine{knitr::rmarkdown}
@@ -12,21 +14,20 @@ bibliography: exdex.bib
 
 The `exdex` package is a tool for estimating the extremal index.
 
-## Installation
-
-To install:
-
-* the latest released version: `install.packages("exdex")`.
-
 ## K-gaps model
 
 The extremal index has several interpretations and leading to different models/methods by which inferences about $\theta$ can be made.  Here we consider a model based on the behaviour of occurrences of exceedances of a high threshold.  The *K-gaps model* of   @SD2010 extends the model of @FS2003 by incorporating a *run length* parameter $K$. Under this model threshold inter-exceedance times not larger than $K$ are part of the same cluster and other inter-exceedance times have an exponential distribution with rate parameter $\theta$.  Thus, $\theta$ has dual role as the probability that a process leaves one cluster of threshold exceedances and as the reciprocal of the mean time until the process enters the next cluster.  For details see @SD2010.
 
 The **exdex** package provides functions for performing maximum likelihood and Bayesian inferences about $\theta$ under the K-gaps model.  We illustrate the code using the `newlyn` dataset, which is analysed in @FW2012.  For the sake of illustration we use the default setting, $K = 1$, which may not be appropriate for these data.  See @SD2010 for discussion of this issue and for methodology to inform the choice of $K$.
 
+## SP maxima
+
+This method is using only one parameter, $\theta$ and is not making full parametric assumptions about distributions. In particular, we use only the approximate relationship $G=F^{b\theta}$ between $G$ and $F$. This relationship is a consequence of Theorem 5.2 in @Coles2001. $F$ is usually unknown, therefore we estimate the extremal index using the empirical c.d.f. In order to do that we use the sliding block maxima. The reason is that by using the sliding block maxima we produce a sample $Y^s$ that contains more information about $\theta$ than the subsample $Y^d$ produced by the disjoint block maxima. Thus $Y^s$ produces a more efficient estimator of $\theta$. Since we do not make any specific assumptions about the distributions and we do not have to estimate the five other parameters then $\theta$ is estimated directly. A more detailed account of this theory can be found in @Northrop2015.
+
 ## Plot of Theta against Quantile Level of threshold
 
-The function `threshplot` calculates maximum likelihood estimates of the extremal index $\theta$ based on the K-gaps model for threshold inter-exceedances times of Suveges and Davison (2010).
+The function `threshplot` calculates maximum likelihood estimates of the extremal index $\theta$ based on the K-gaps model for threshold inter-exceedances times of 
+@SD2010.
 
 ```{r fig.width = 5 , fig.height= 5 }
 library(exdex)

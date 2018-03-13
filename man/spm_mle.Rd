@@ -4,7 +4,8 @@
 \alias{spm_mle}
 \title{Semiparametric maxima estimator of the extremal index}
 \usage{
-spm_mle(data, b, sliding = TRUE, constrain = TRUE)
+spm_mle(data, b, sliding = TRUE, constrain = TRUE, conf = NULL,
+  R = 1000)
 }
 \arguments{
 \item{data}{A numeric vector of raw data.}
@@ -16,6 +17,17 @@ spm_mle(data, b, sliding = TRUE, constrain = TRUE)
 
 \item{constrain}{A logical scalar indicating whether or not to constrain the
 mle to lie in the interval (0, 1].}
+
+\item{conf}{A numeric scalar.  If \code{conf} is supplied then the
+the standard error and \code{conf}\% likelihood-based confidence interval
+for \eqn{\theta}, and the standard error of the estimator of \eqn{\theta},
+are estimated using block bootstrapping, implemented by
+\code{\link[boot]{tsboot}}.  See Northrop (2015) and references therein
+for more information.}
+
+\item{R}{An integer scalar.  The number of bootstrap resamples used to
+estimate the standard error and confidence intervals.
+See \code{\link[boot]{tsboot}}.}
 }
 \value{
 A list containing
@@ -27,6 +39,8 @@ A list containing
       vector of length two giving lower and upper confidence limits for
       \eqn{\theta}.}
   }
+  If \code{conf} is not supplied then only the MLE \code{theta_mle}
+  is returned.
 }
 \description{
 Calculates the semiparametric maxima estimator of the extremal index
@@ -46,6 +60,12 @@ returned, even if it is greater than 1.
 \examples{
 spm_mle(newlyn, 20)
 spm_mle(newlyn, 20, sliding = FALSE)
+
+spm_mle(newlyn, 20, sliding = FALSE, conf = 95)
+# When sliding = TRUE bootstrapping is slow
+\dontrun{
+spm_mle(newlyn, 20, conf = 95)
+}
 }
 \references{
 Northrop, P. J. (2015) \emph{An efficient semiparametric maxima

@@ -21,7 +21,7 @@
 #'     \item {\code{x} : } {the input \code{x}, included for
 #'       consistency with the output from \code{\link{disjoint_maxima}}}.
 #'   }
-#' @seealso \code{\link{spm_maxima}} for semiparametric estimation of the
+#' @seealso \code{\link{spm_mle}} for semiparametric estimation of the
 #'   extremal index based on block maxima.
 #' @seealso \code{\link{disjoint_maxima}} for the calculation of the maxima
 #'   over disjoint blocks.

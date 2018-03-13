@@ -34,7 +34,7 @@ The function \code{\link[zoo]{rollapply}} in the
   semiparametric estimation of the extremal index based on block maxima.
 }
 \seealso{
-\code{\link{spm_maxima}} for semiparametric estimation of the
+\code{\link{spm_mle}} for semiparametric estimation of the
   extremal index based on block maxima.
 
 \code{\link{disjoint_maxima}} for the calculation of the maxima

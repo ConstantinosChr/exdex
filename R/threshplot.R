@@ -47,7 +47,7 @@
 #' @seealso \code{\link{kgaps_mle}} for maximum likelihood estimation for the
 #'   K-gaps model.
 #' @examples
-#' threshplot(newlyn, 40, 80)
+#' threshplot(newlyn, 50, 95)
 #' @export
 threshplot <- function (data, tmin, tmax, conf = 95, k = 1, ... ){
 

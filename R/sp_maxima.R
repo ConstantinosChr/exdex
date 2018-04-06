@@ -23,7 +23,7 @@
 #' function uses sliding block maxima, that is, the largest value observed in
 #' \emph{all} blocks of \code{b} observations, whereas if \code{sliding = FALSE}
 #' then disjoint block maxima, that is, the largest values in non-overlapping
-#' blocks of \code{b} osbervations, are used.  If \code{constrain = TRUE} then
+#' blocks of \code{b} observations, are used.  If \code{constrain = TRUE} then
 #' if the raw estimate of the extremal index is greater than one then a value of
 #' 1 is returned. Otherwise (\code{constrain = FALSE}) the raw estimate is
 #' returned, even if it is greater than 1.

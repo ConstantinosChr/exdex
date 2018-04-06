@@ -20,8 +20,7 @@ License: GPL (>= 2)
 Depends:
     R (>= 3.3.1)
 Suggests: knitr,
-    rmarkdown,
-    testthat
+    rmarkdown
 Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.0.1

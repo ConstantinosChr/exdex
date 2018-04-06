@@ -31,7 +31,7 @@ devtools::install_github("ConstantinosChr/exdex")
 
 For the K-gaps method:
 
-```{r example}
+```{r}
 thresh <- quantile(newlyn, probs = 0.90)
 k_res <- kgaps_mle(newlyn, thresh, conf = 95)
 k_res$theta_mle
@@ -41,7 +41,7 @@ k_res$theta_ci
 
 For the block maxima method:
 
-```{r example}
+```{r}
 spm_mle(newlyn, 20)
 spm_mle(newlyn, 20, sliding = FALSE)
 ```

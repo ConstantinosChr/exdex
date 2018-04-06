@@ -56,7 +56,7 @@ The maximum likelihood estimate of the extremal index \eqn{\theta}
    \code{conf}.
 }
 \examples{
-threshplot(newlyn, 40, 80)
+threshplot(newlyn, 50, 95)
 }
 \references{
 Coles, S.G. An Introduction to Statistical Modeling of Extreme

@@ -50,9 +50,9 @@ Calculates the semiparametric maxima estimator of the extremal index
 The extremal index \eqn{\theta} is estimated using the semiparametric
 maxima estimator of Northrop (2015).  If \code{sliding = TRUE} then the
 function uses sliding block maxima, that is, the largest value observed in
-\emph{all} blocks of \code{b} observatioins, whereas if \code{sliding = FALSE}
+\emph{all} blocks of \code{b} observations, whereas if \code{sliding = FALSE}
 then disjoint block maxima, that is, the largest values in non-overlapping
-blocks of \code{b} osbervations, are used.  If \code{constrain = TRUE} then
+blocks of \code{b} observations, are used.  If \code{constrain = TRUE} then
 if the raw estimate of the extremal index is greater than one then a value of
 1 is returned. Otherwise (\code{constrain = FALSE}) the raw estimate is
 returned, even if it is greater than 1.

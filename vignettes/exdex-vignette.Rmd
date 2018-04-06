@@ -14,15 +14,26 @@ bibliography: exdex.bib
 
 The `exdex` package is a tool for estimating the extremal index.
 
-## K-gaps model
+# K-gaps model
 
 The extremal index has several interpretations and leading to different models/methods by which inferences about $\theta$ can be made.  Here we consider a model based on the behaviour of occurrences of exceedances of a high threshold.  The *K-gaps model* of   @SD2010 extends the model of @FS2003 by incorporating a *run length* parameter $K$. Under this model threshold inter-exceedance times not larger than $K$ are part of the same cluster and other inter-exceedance times have an exponential distribution with rate parameter $\theta$.  Thus, $\theta$ has dual role as the probability that a process leaves one cluster of threshold exceedances and as the reciprocal of the mean time until the process enters the next cluster.  For details see @SD2010.
 
 The **exdex** package provides functions for performing maximum likelihood and Bayesian inferences about $\theta$ under the K-gaps model.  We illustrate the code using the `newlyn` dataset, which is analysed in @FW2012.  For the sake of illustration we use the default setting, $K = 1$, which may not be appropriate for these data.  See @SD2010 for discussion of this issue and for methodology to inform the choice of $K$.
 
-## SP maxima
+## Maximum Likelihood Estimation
 
-This method is using only one parameter, $\theta$ and is not making full parametric assumptions about distributions. In particular, we use only the approximate relationship $G=F^{b\theta}$ between $G$ and $F$. This relationship is a consequence of Theorem 5.2 in @Coles2001. $F$ is usually unknown, therefore we estimate the extremal index using the empirical c.d.f. In order to do that we use the sliding block maxima. The reason is that by using the sliding block maxima we produce a sample $Y^s$ that contains more information about $\theta$ than the subsample $Y^d$ produced by the disjoint block maxima. Thus $Y^s$ produces a more efficient estimator of $\theta$. Since we do not make any specific assumptions about the distributions and we do not have to estimate the five other parameters then $\theta$ is estimated directly. A more detailed account of this theory can be found in @Northrop2015.
+The function `kgaps_mle` finds the maximum likelihood estimate and its estimated standard error and (optionally) a `conf`% level likelihood-based confidence interval for $\theta$.
+
+```{r}
+library(exdex)
+# Set a threshold at the 90% quantile
+thresh <- quantile(newlyn, probs = 0.90)
+# MLE, SE and 95% likelihood-based confidence interval
+mle <- kgaps_mle(newlyn, thresh, conf = 95)
+mle$theta_mle
+mle$theta_se
+mle$theta_ci
+```
 
 ## Plot of Theta against Quantile Level of threshold
 
@@ -46,7 +57,7 @@ threshplot(newlyn, 50, 60,
   # Change the line type
            lty = c(2, 1, 2),
   # Change the colours of the lines
-           col = c(4, 5, 6),
+           col = c(1, 5, 2),
   # Change the label names for X and Y axes
            xlab = "Any name",
            ylab = "Any name",
@@ -57,4 +68,22 @@ threshplot(newlyn, 50, 60,
            )
 ```
 
-## References
+# SP maxima
+
+This method is using only one parameter, $\theta$ and is not making full parametric assumptions about distributions. In particular, we use only the approximate relationship $G=F^{b\theta}$ between $G$ and $F$. This relationship is a consequence of Theorem 5.2 in @Coles2001. $F$ is usually unknown, therefore we estimate the extremal index using the empirical c.d.f.. In order to do that we use the sliding block maxima. The reason is that by using the sliding block maxima we produce a sample $Y^s$ that contains more information about $\theta$ than the subsample $Y^d$ produced by the disjoint block maxima. Thus $Y^s$ produces a more efficient estimator of $\theta$. Since we do not make any specific assumptions about the distributions and we do not have to estimate the five other parameters then $\theta$ is estimated directly. A more detailed account of this theory can be found in @Northrop2015.
+
+## Maximum Likelihood Estimation
+
+The function `spm_mle` finds the maximum likelihood estimate and its estimated standard error and (optionally) a `conf`% level likelihood-based confidence interval for $\theta$.
+
+```{r}
+library(exdex)
+# Decide on the block size and indicate whether to use sliding blocks or disjoint blocks 
+# MLE, SE and 95% likelihood-based confidence interval
+spm_mle(newlyn, 20, sliding = FALSE, conf = 95)
+mle$theta_mle
+mle$theta_se
+mle$theta_ci
+```
+
+# References
